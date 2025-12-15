@@ -10,6 +10,7 @@ import Reviews from './components/Reviews/Reviews'
 import FAQ from './components/FAQ/FAQ'
 import CTA from './components/CTA/CTA'
 import Footer from './components/Footer/Footer'
+import Chatbot from './components/Chatbot/Chatbot'
 import styles from './App.module.css'
 
 function App() {
@@ -100,6 +101,7 @@ function App() {
         <CTA />
       </main>
       <Footer />
+      <Chatbot />
     </div>
   )
 }
