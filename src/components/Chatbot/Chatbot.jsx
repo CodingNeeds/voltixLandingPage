@@ -6,7 +6,7 @@ import styles from './Chatbot.module.css'
 // =============================================================================
 const CHATBOT_CONFIG = {
   // n8n Webhook URL
-  webhookUrl: 'http://localhost:5678/webhook/4c435ac1-9c5a-4e0d-b79c-1b07c27f8027',
+  webhookUrl: 'http://localhost:5678/webhook/97407cd4-fc17-4185-9344-9dcc83f41fe9',
   
   // Initial greeting message
   welcomeMessage: "Hi! 👋 I'm VOLTIX Assistant. I'm here to help you learn about the VOLTIX Pro 10K Magnetic Wireless Power Bank. What would you like to know?",
