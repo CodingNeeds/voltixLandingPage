@@ -12,7 +12,7 @@
       "typeVersion": 2.1,
       "position": [
         -208,
-        688
+        912
       ],
       "id": "fb8e0034-1103-4f61-8cdd-0f006670bdd2",
       "name": "Webhook",
@@ -23,14 +23,14 @@
         "promptType": "define",
         "text": "={{ $json.body.message }}",
         "options": {
-          "systemMessage": "You are VOLTIX Assistant, a friendly and knowledgeable customer support chatbot for VOLTIX Pro 10K Magnetic Wireless Power Bank.\n\nYour role is to:\n- Answer questions about the VOLTIX Pro 10K power bank product\n- Help customers understand features, specifications, and compatibility\n- Assist with pre-purchase questions and concerns\n- Provide troubleshooting guidance\n- Guide users toward making a purchase when appropriate\n\nKey product information:\n- Product: VOLTIX Pro 10K Magnetic Wireless Power Bank\n- Price: $49.99 (28% off from $69.99)\n- Capacity: 10,000mAh\n- Wireless charging: Up to 15W magnetic wireless\n- Wired charging: PD 22.5W (USB-A) and 20W (USB-C)\n- Dimensions: 98 × 64 × 15 mm, ~200g\n- Warranty: 18 months\n- Airline approved for carry-on\n\nTone: Be helpful, professional, and enthusiastic about the product. Keep responses concise but informative. If you don't know something, say so and offer to connect them with human support."
+          "systemMessage": "You are VOLTIX Assistant, a friendly and knowledgeable customer support chatbot for VOLTIX Pro 10K Magnetic Wireless Power Bank.\n\nYour role is to:\n- Answer questions about the VOLTIX Pro 10K power bank product\n- Help customers understand features, specifications, and compatibility\n- Assist with pre-purchase questions and concerns\n- Provide troubleshooting guidance\n- Guide users toward making a purchase when appropriate\n\nTone: Be helpful, professional, and enthusiastic about the product. Keep responses concise but informative. If you don't know something, say so and offer to connect them with human support."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        80,
-        688
+        72,
+        912
       ],
       "id": "b372d49f-3d31-47d3-8a86-4f21a6f4634a",
       "name": "AI Agent"
@@ -43,7 +43,7 @@
       "typeVersion": 1,
       "position": [
         16,
-        912
+        1136
       ],
       "id": "eff51721-9f0c-4fc2-b9fc-b5d04633a693",
       "name": "Google Gemini Chat Model",
@@ -63,7 +63,7 @@
       "typeVersion": 1.3,
       "position": [
         144,
-        912
+        1136
       ],
       "id": "57d63f00-9e61-4be7-b197-f8979fb7b4b1",
       "name": "Simple Memory"
@@ -76,7 +76,7 @@
       "typeVersion": 1.4,
       "position": [
         640,
-        688
+        912
       ],
       "id": "fc524833-5425-485b-8184-b9c29a7e97f7",
       "name": "Respond to Webhook"
@@ -99,8 +99,8 @@
       "type": "n8n-nodes-base.formTrigger",
       "typeVersion": 2.3,
       "position": [
-        128,
-        64
+        -208,
+        376
       ],
       "id": "d7e8b119-3bbd-4fcb-b341-504a2bff61a3",
       "name": "On form submission",
@@ -112,8 +112,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
       "typeVersion": 1,
       "position": [
-        416,
-        336
+        24,
+        496
       ],
       "id": "0d58f7b2-7b69-41ca-a418-936d26b66687",
       "name": "Embeddings Google Gemini",
@@ -133,47 +133,11 @@
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1.1,
       "position": [
-        576,
-        336
+        152,
+        496
       ],
       "id": "85d6f09a-6ee6-413e-a4ba-c4246304f591",
       "name": "Default Data Loader"
-    },
-    {
-      "parameters": {
-        "mode": "retrieve-as-tool",
-        "toolDescription": "vector store for ai chatbot",
-        "memoryKey": {
-          "__rl": true,
-          "mode": "list",
-          "value": "vector_store_key"
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
-      "typeVersion": 1.3,
-      "position": [
-        272,
-        912
-      ],
-      "id": "89114efa-5f8a-41a5-a455-bec3367f8fe5",
-      "name": "Simple Vector Store1"
-    },
-    {
-      "parameters": {},
-      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
-      "typeVersion": 1,
-      "position": [
-        352,
-        1120
-      ],
-      "id": "bd2f90f3-e24c-4105-8cfd-331d64a62ea8",
-      "name": "Embeddings Google Gemini1",
-      "credentials": {
-        "googlePalmApi": {
-          "id": "7J5jg9pjzO0NjqOv",
-          "name": "Google Gemini(PaLM) Api account"
-        }
-      }
     },
     {
       "parameters": {
@@ -189,8 +153,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1.3,
       "position": [
-        496,
-        80
+        16,
+        272
       ],
       "id": "437690ad-23d6-437d-ba9d-815384f0598d",
       "name": "Supabase Vector Store",
@@ -198,6 +162,50 @@
         "supabaseApi": {
           "id": "OvlK7AFmdXcV4KCl",
           "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "work with the data from the embedded knowledge",
+        "tableName": {
+          "__rl": true,
+          "value": "vector_store",
+          "mode": "list",
+          "cachedResultName": "vector_store"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.3,
+      "position": [
+        272,
+        1136
+      ],
+      "id": "6815320f-5a84-453b-a25c-e56673cf9146",
+      "name": "Supabase Vector Store1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "OvlK7AFmdXcV4KCl",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        352,
+        1344
+      ],
+      "id": "dfad4f31-05ab-4565-981f-bad5fba4e13e",
+      "name": "Embeddings Google Gemini2",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "7J5jg9pjzO0NjqOv",
+          "name": "Google Gemini(PaLM) Api account"
         }
       }
     }
@@ -281,7 +289,7 @@
         ]
       ]
     },
-    "Simple Vector Store1": {
+    "Supabase Vector Store1": {
       "ai_tool": [
         [
           {
@@ -292,11 +300,11 @@
         ]
       ]
     },
-    "Embeddings Google Gemini1": {
+    "Embeddings Google Gemini2": {
       "ai_embedding": [
         [
           {
-            "node": "Simple Vector Store1",
+            "node": "Supabase Vector Store1",
             "type": "ai_embedding",
             "index": 0
           }
@@ -308,7 +316,7 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "187004eb-c9a9-42db-85eb-85fb20e1340b",
+  "versionId": "d301f43a-4731-4328-9348-9acd76a0a91b",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "d30e10418323ee3b0cace2b29535082b0ea784c195c4c424b33289493bff7863"
